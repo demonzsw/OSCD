@@ -72,10 +72,12 @@ void operateP(PCB* p){
     while(needA--){
         p->setHasA(p->getHasA()+1);
         A.wait(); 
+        numA = A.getCount();
     }
     while(needB--){
         p->setHasB(p->getHasB()+1);
         B.wait();
+        numB = B.getCount();
     }
     p->setState(READY);
     readyNum++;
@@ -86,10 +88,12 @@ void operateV(PCB* p){
     int needA = p->getNeedA();
     int needB = p->getNeedB();
     while(needA--){
-        A.signal();  
+        A.signal();
+        numA = A.getCount();  
     }
     while(needB--){
         B.signal();
+        numB = B.getCount();
     }
     p->setHasA(0);
     p->setHasB(0);

@@ -22,6 +22,9 @@ class Semaphore{
             }
             --m_count;
         }
+        int getCount(){
+            return m_count;
+        }
     private:
         mutex m_mutex;
         condition_variable m_cv_uptr;
